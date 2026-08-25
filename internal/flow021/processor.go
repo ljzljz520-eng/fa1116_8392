@@ -49,9 +49,6 @@ func (p *Processor) Process(input Observation) (Observation, error) {
 	if exists && input.Sequence <= previous.Sequence {
 		return input, fmt.Errorf("sequence %d is not after %d", input.Sequence, previous.Sequence)
 	}
-	if exists && input.Sequence > 1 {
-		input.Content = previous.Content
-	}
 	if input.Status == "" {
 		input.Status = "captured"
 	}
